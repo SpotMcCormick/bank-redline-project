@@ -1,0 +1,18 @@
+#config.yml
+#first working on the api paths in this config. It id the FDIC data with the params that we will use in the request library 
+api_paths:
+  fdic_url: https://banks.data.fdic.gov/api/locations
+  fdic_states:
+    - AL
+    - FL
+    - GA
+    - MS
+    - NC
+    - SC
+    - TN
+  fdic_fields: NAME,OFFNAME,ADDRESS,CITY,STNAME,COUNTY,ZIP,LATITUDE,LONGITUDE,RUNDATE,UNINUM,CERT
+  fdic_limit: 10000
+#aws keys and buckets
+aws:
+  s3_bucket_name: bank-snowflake-project
+  
