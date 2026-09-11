@@ -53,9 +53,8 @@ def main():
     today = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     object_name = f"raw/fdic/{today}.json"
     bucket_name = config["aws"]["s3_bucket_name"]
-    print(data)
 
-    # load_to_s3(s3_client, data, bucket_name, object_name)
+    load_to_s3(s3_client, data, bucket_name, object_name)
 
 if __name__ == "__main__":
     main()

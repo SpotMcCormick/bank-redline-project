@@ -2,7 +2,7 @@ name: FDIC Weekly Extract
 
 on:
   schedule:
-    - cron: '0 12 * * 5'  # adjust to run safely before your Snowflake task's 1:00 PM Central trigger
+    - cron: '0 12 * * 5'  #7am cst
   workflow_dispatch:
 
 jobs:
