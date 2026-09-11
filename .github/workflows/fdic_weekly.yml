@@ -1,0 +1,28 @@
+name: FDIC Weekly Extract
+
+on:
+  schedule:
+    - cron: '0 12 * * 5'  # adjust to run safely before your Snowflake task's 1:00 PM Central trigger
+  workflow_dispatch:
+
+jobs:
+  extract-load:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run extract and load
+        env:
+          fdic_api_key: ${{ secrets.FDIC_API_KEY }}
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: python main.py
