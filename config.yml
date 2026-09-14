@@ -12,7 +12,21 @@ api_paths:
     - TN
   fdic_fields: NAME,OFFNAME,ADDRESS,CITY,STNAME,COUNTY,ZIP,LATITUDE,LONGITUDE,RUNDATE,UNINUM,CERT
   fdic_limit: 10000
+
+  #census ACS 5-year data profile, county-level, southeast states
+  census_url: https://api.census.gov/data/2022/acs/acs5/profile
+  census_variables: NAME,DP05_0001E,DP03_0062E   # county, population, household income
+  census_states:
+    "01": Alabama
+    "12": Florida
+    "13": Georgia
+    "22": Louisiana
+    "28": Mississippi
+    "37": North Carolina
+    "45": South Carolina
+    "47": Tennessee
+  census_for: county:*
+
 #aws keys and buckets
 aws:
   s3_bucket_name: bank-snowflake-project
-  

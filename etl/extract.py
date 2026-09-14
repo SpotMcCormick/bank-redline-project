@@ -39,3 +39,24 @@ def extract_from_api_with_offset(url: str, params: dict = None) -> list:
     except requests.exceptions.RequestException as e:
         logger.error(f"Error extracting data from API: {e}")
         raise
+
+def extract_from_api(url: str, params: dict = None) -> list:
+    """
+    Extract data from an API endpoint.
+
+    Args:
+        url (str): The API endpoint URL.
+        params (dict, optional): Query parameters for the API request. Defaults to None.
+
+    Returns:
+        list: The JSON response from the API.
+    """
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+        data = response.json()
+        logger.info(f"Successfully extracted data from API with {len(data)} rows.")
+        return data
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Error extracting data from API: {e}")
+        raise
