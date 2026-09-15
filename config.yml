@@ -10,6 +10,7 @@ api_paths:
     - NC
     - SC
     - TN
+    - LA
   fdic_fields: NAME,OFFNAME,ADDRESS,CITY,STNAME,COUNTY,ZIP,LATITUDE,LONGITUDE,RUNDATE,UNINUM,CERT
   fdic_limit: 10000
 
@@ -29,7 +30,7 @@ api_paths:
 
 # hmda load data from 2024 query params 
   hmda_url: https://ffiec.cfpb.gov/v2/data-browser-api/view/csv
-  hmda_states: AL,GA,FL,SC,NC,TN,MS
+  hmda_states: AL,GA,FL,SC,NC,TN,MS,LA
   hmda_years: 2024
   hmda_loan_purposes: 1
 

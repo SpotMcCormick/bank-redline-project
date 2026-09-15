@@ -53,7 +53,20 @@ graph LR
 Data is ingest via a python scrpit that pulls and loads into an Amazon S3 Bucket. From there Snowflake's external storage integration is configured to read the S3 bucket and ingested into the staging area. From there those files are copied into a staging table then merged into a dimension table. The raw data is scheduled via GitHub Actions and then once it lands into the S3 bucket then Snowflake stored procedures and tasks to ingest the data into the dimension tables. From there a view is created for our gold/analytics layer
 
 ### Deliverable 
-[Tableau Dashboard](https://public.tableau.com/app/profile/jeremy.mccormick/viz/bank_redline/Dashboard1#1)
+**[Tableau Dashboard](https://public.tableau.com/app/profile/jeremy.mccormick/viz/bank_redline/Dashboard1#1)**
+
+### Data Sources
+
+All the API config (endpoints, states, fields, params) lives in `config.yml` so nothing is hardcoded in the extract scripts.
+
+**[FDIC BankFind Suite API](https://banks.data.fdic.gov/docs/)** — pulls bank location data (name, address, city, county, lat/long, cert number, etc.) for the southeast states: AL, FL, GA, LA, MS, NC, SC, TN.
+
+**[Census ACS 5-Year Data Profile API](https://www.census.gov/data/developers/data-sets/acs-5year.html) (2022)** — county-level population and household income data (`DP05_0001E`, `DP03_0062E`) for the southeast footprint: AL, FL, GA, LA, MS, NC, SC, TN. Pulled at the county level (`county:*`).
+
+**[HMDA Data Browser API](https://ffiec.cfpb.gov/documentation/api/data-browser/)** — loan-level data from the CFPB for 2024, filtered to home purchase loans (loan purpose = 1), across AL, FL, GA, LA, MS, NC, SC, TN. This is the piece I'm still working through since it's key to actually measuring loan counts/amounts against the FDIC and Census data.
+
+Raw pulls from all three sources land in an S3 bucket (`bank-snowflake-project`) before getting picked up by Snowflake's external storage integration.
+
 
 ### Project Directory
 ```
