@@ -19,6 +19,7 @@ graph LR
     subgraph Sources ["Data Sources (Extract)"]
         FDIC[FDIC API]
         CENSUS[CENSUS API]
+        HMDA[HMDA API]
     end
 
     %% Load
@@ -45,10 +46,10 @@ graph LR
     %% Data Flow Pipeline
     FDIC -->|Extraction | S3
     CENSUS -->|Extraction| S3
+    HMDA -->|Extraction| S3
     S3 -->|external storage integration|snf
     snf -->|Copy Into| transform
-    transform -->|Create View As| gold   
-
+    transform -->|Create View As| gold
 ```
 Data is ingest via a python scrpit that pulls and loads into an Amazon S3 Bucket. From there Snowflake's external storage integration is configured to read the S3 bucket and ingested into the staging area. From there those files are copied into a staging table then merged into a dimension table. The raw data is scheduled via GitHub Actions and then once it lands into the S3 bucket then Snowflake stored procedures and tasks to ingest the data into the dimension tables. From there a view is created for our gold/analytics layer
 
