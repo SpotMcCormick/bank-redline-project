@@ -70,30 +70,34 @@ Raw pulls from all three sources land in an S3 bucket (`bank-snowflake-project`)
 
 ### Project Directory
 ```
-├── config.yml <- containing API's, query params, AWS buckets 
+├── config.yml <- containing API's, query params, AWS buckets
 ├── data <- folder for raw data exports
 ├── etl <-scripts for extracting from api and loading to s3
-│   ├── extract.py
-│   └── load.py
+│ ├── extract.py
+│ └── load.py
 ├── main.py <- run etl (technically EL)
 ├── README.md <- this file
 ├── requirements.txt <-dependencies for this file
 ├── sql <- sql queries for the transforming the loaded data
-│   ├── census
-│   │   ├── census_stage.sql
-│   │   ├── dim_county_census_stats.sql
-│   │   └── stg_county_data.sql
-│   ├── fdic
-│   │   ├── create_stage.sql
-│   │   ├── load_s3_stg_se_banks.sql
-│   │   ├── merge_stg_to_dim_banks.sql
-│   │   ├── storage_integration.sql
-│   │   └── tasks.sql
-│   ├── gold
-│   │   └── mart_bank_redline.sql
-│   └── hmda
-│       └── create_stage.sql
+│ ├── census
+│ │ ├── census_stage.sql
+│ │ ├── dim_county_census_stats.sql
+│ │ └── stg_county_data.sql
+│ ├── fdic
+│ │ ├── create_stage.sql
+│ │ ├── load_s3_stg_se_banks.sql
+│ │ ├── merge_stg_to_dim_banks.sql
+│ │ ├── storage_integration.sql
+│ │ └── tasks.sql
+│ ├── gold
+│ │ └── mart_bank_redline.sql
+│ └── hmda
+│ ├── copy_into.sql
+│ ├── create_stage.sql
+│ └── create_table.sql
 └── static_main.py <- static data used for uploading to s3
+
+Write a message…
 ```
 
 ## Contact
