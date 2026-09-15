@@ -60,3 +60,23 @@ def extract_from_api(url: str, params: dict = None) -> list:
     except requests.exceptions.RequestException as e:
         logger.error(f"Error extracting data from API: {e}")
         raise
+
+def extract_from_api_csv(url: str, params: dict = None) -> str:
+    """
+    Extract raw CSV data from an API endpoint.
+
+    Args:
+        url (str): The API endpoint URL.
+        params (dict, optional): Query parameters for the API request. Defaults to None.
+
+    Returns:
+        str: The raw CSV text response from the API.
+    """
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+        logger.info(f"Successfully extracted CSV data from API.")
+        return response.text
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Error extracting CSV data from API: {e}")
+        raise

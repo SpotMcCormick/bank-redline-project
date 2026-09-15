@@ -27,6 +27,12 @@ api_paths:
     "47": Tennessee
   census_for: county:*
 
+# hmda load data from 2024 query params 
+  hmda_url: https://ffiec.cfpb.gov/v2/data-browser-api/view/csv
+  hmda_states: AL,GA,FL,SC,NC,TN,MS
+  hmda_years: 2024
+  hmda_loan_purposes: 1
+
 #aws keys and buckets
 aws:
   s3_bucket_name: bank-snowflake-project

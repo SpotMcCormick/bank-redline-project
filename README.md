@@ -57,7 +57,7 @@ Data is ingest via a python scrpit that pulls and loads into an Amazon S3 Bucket
 
 ### Project Directory
 ```
-├── adhoc.py <- random py script for testing ideas
+├── static_main.py <- static data used for uploading to s3
 ├── config.yml <- containing API's, query params, AWS buckets 
 ├── data <- folder for raw data exports
 ├── etl <-scripts for extracting from api and loading to s3

@@ -37,6 +37,8 @@ def main():
         with open(CONFIG_PATH) as f:
             config = yaml.safe_load(f)
 
+        census_api_key = os.getenv("census_api_key")
+
         s3_client = boto3.client(
             "s3",
             aws_access_key_id=os.getenv("aws_access_key_id"),
@@ -47,13 +49,14 @@ def main():
         bucket_name = config["aws"]["s3_bucket_name"]
         today = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
 
-        # Census data extraction and loading
+        # Census extraction and loading
         census_params = {
             "get": api_config["census_variables"],
             "for": api_config["census_for"],
             "in": f"state:{','.join(api_config['census_states'].keys())}",
+            "key": census_api_key,
         }
-        logger.info("Extracting data from Census API")
+        logger.info(f"Extracting data from Census API")
 
         census_data = extract_from_api(api_config["census_url"], census_params)
         census_object_name = f"raw/census/{today}.json"
@@ -67,7 +70,7 @@ def main():
             "years": api_config["hmda_years"],
             "loan_purposes": api_config["hmda_loan_purposes"],
         }
-        logger.info("Extracting data from HMDA API")
+        logger.info(f"Extracting data from HMDA API")
 
         hmda_data = extract_from_api_csv(api_config["hmda_url"], hmda_params)
         hmda_object_name = f"raw/hmda/{today}.csv"
