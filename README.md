@@ -2,7 +2,7 @@
 Thank you for checking out my github and this project. This project was inspired by using Snowflake at work and I wanted to get my hands dirty with some data engineering with Snowflake. 
 
 ## About the project
-I really wanted to find out if there is any redlining from banks in the south east using FDIC and Census data. I am still researching the other data sources because to really find out if redlining is happening is to get loan counts and amounts to incorporate with this analysis. That being said im still looking at other data sources so this is an on going project.  
+I really wanted to find out if there is any redlining from banks in the south east using FDIC and Census data. I am still researching the other data sources because to really find out if redlining is happening is to get loan counts and amounts to incorporate with this analysis which is why im using HMDA data for home loands. This being said im still looking at other data sources so this is an on going project and see if I have a story to tell.  
 
 ### Tools 
 One reason i like answering these questions is that it is an opportunity to learn new tools of the trade for data engineering and analytics. The tools used for this is  
