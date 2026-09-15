@@ -97,7 +97,6 @@ Raw pulls from all three sources land in an S3 bucket (`bank-snowflake-project`)
 │ └── create_table.sql
 └── static_main.py <- static data used for uploading to s3
 
-Write a message…
 ```
 
 ## Contact
