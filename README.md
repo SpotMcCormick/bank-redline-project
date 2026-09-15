@@ -2,7 +2,7 @@
 Thank you for checking out my github and this project. This project was inspired by using Snowflake at work and I wanted to get my hands dirty with some data engineering with Snowflake. 
 
 ## About the project
-I really wanted to find out if there is any redlining from banks in the south east using FDIC and Census data. I am still researching the other data sources because to really find out if redlining is happening is to get loan counts and amounts to incorporate with this analysis which is why im using HMDA data for home loands. This being said im still looking at other data sources so this is an on going project and see if I have a story to tell.  
+I really wanted to find out if there is any redlining from banks in the south east using FDIC and Census data. I am still researching the other data sources because to really find out if redlining is happening is to get loan counts and amounts to incorporate with this analysis which is why I'm using HMDA data for home loans. This being said I'm still looking at other data sources so this is an ongoing project and see if I have a story to tell.  
 
 ### Tools 
 One reason i like answering these questions is that it is an opportunity to learn new tools of the trade for data engineering and analytics. The tools used for this is  
@@ -51,7 +51,7 @@ graph LR
     snf -->|Copy Into| transform
     transform -->|Create View As| gold
 ```
-Data is ingest via a python scrpit that pulls and loads into an Amazon S3 Bucket. From there Snowflake's external storage integration is configured to read the S3 bucket and ingested into the staging area. From there those files are copied into a staging table then merged into a dimension table. The raw data is scheduled via GitHub Actions and then once it lands into the S3 bucket then Snowflake stored procedures and tasks to ingest the data into the dimension tables. From there a view is created for our gold/analytics layer
+Data is ingested via a python script that pulls and loads into an Amazon S3 Bucket. From there Snowflake's external storage integration is configured to read the S3 bucket and ingested into the staging area. From there those files are copied into a staging table then merged into a dimension table. The raw data is scheduled via GitHub Actions and then once it lands into the S3 bucket then Snowflake stored procedures and tasks to ingest the data into the dimension tables. From there a view is created for our gold/analytics layer
 
 ### Deliverable 
 **[Tableau Dashboard](https://public.tableau.com/app/profile/jeremy.mccormick/viz/bank_redline/Dashboard1#1)**
