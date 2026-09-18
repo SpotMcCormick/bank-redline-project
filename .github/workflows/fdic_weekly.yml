@@ -2,7 +2,7 @@ name: FDIC Weekly Extract
 
 on:
   schedule:
-    - cron: '0 12 * * 5'  #7am cst
+    - cron: '30 14 * * 5' #7am cst
   workflow_dispatch:
 
 jobs:
